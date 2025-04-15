@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="speingboot-deepseek-demo" />
         <module name="springboot-gemini-demo" />
+        <module name="springboot-reactdemo" />
       </profile>
     </annotationProcessing>
   </component>

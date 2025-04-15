@@ -1,3 +1,6 @@
 [submodule "spring-boot-react-demo"]
 	path = spring-boot-react-demo
 	url = 'https://github.com/Nrapendra786/springboot-applications.git'
+[submodule "springboot-reactdemo/spring-boot-react-demo"]
+	path = springboot-reactdemo/spring-boot-react-demo
+	url = 'https://github.com/Nrapendra786/springboot-applications.git'
