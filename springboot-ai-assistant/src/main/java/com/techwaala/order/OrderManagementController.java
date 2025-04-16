@@ -20,7 +20,7 @@ public class OrderManagementController {
           return ResponseEntity.status(HttpStatus.CREATED).body("Order ID " + orderId + " is created");
     }
 
-    @PostMapping("/{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity<?> findUserOrder(@PathVariable("userId") Long userId) {
         var userOrders = orderManagementService.getAllUserOrders(userId);
         if(userOrders.isPresent()){

@@ -21,5 +21,5 @@ public class UserOrder {
     private String userId;
 
     @Column(name = "quantity")
-    private Integer orderQty;
+    private Integer quantity;
 }
