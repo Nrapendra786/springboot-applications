@@ -2,13 +2,14 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="speingboot-deepseek-demo" />
         <module name="frontend" />
         <module name="springboot-gemini-demo" />
+        <module name="springboot-deepseek-demo" />
       </profile>
       <profile name="Annotation profile for demo" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />

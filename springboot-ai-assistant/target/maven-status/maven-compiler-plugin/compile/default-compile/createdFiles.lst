@@ -1,0 +1,7 @@
+com\techwaala\order\OrderManagementController.class
+com\techwaala\order\OrderManagementService.class
+com\techwaala\OrderManagementApplication.class
+com\techwaala\commons\InitializeData.class
+com\techwaala\user\Users.class
+com\techwaala\order\OrderInfo.class
+com\techwaala\order\OrderRepository.class
