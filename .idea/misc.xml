@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/speingboot-deepseek-demo/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-deepseek-demo/pom.xml" />
         <option value="$PROJECT_DIR$/springboot-reactdemo/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-ai-assiatant/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot-ai-assistant/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
