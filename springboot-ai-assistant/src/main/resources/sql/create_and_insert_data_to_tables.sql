@@ -36,8 +36,10 @@ INSERT INTO ORDERS (id, order_detail, order_time) VALUES (5, 'sports equipment',
 
 DELETE FROM USER_ORDER;
 
-INSERT INTO USER_ORDER (id, order_id, user_id, quantity) VALUES (1,1, 1, 2);
-INSERT INTO USER_ORDER (id, order_id, user_id, quantity) VALUES (2,2, 2, 5);
-INSERT INTO USER_ORDER (id, order_id, user_id, quantity) VALUES (3,3, 3, 1);
-INSERT INTO USER_ORDER (id, order_id, user_id, quantity) VALUES (4,4, 4, 3);
-INSERT INTO USER_ORDER (id, order_id, user_id, quantity) VALUES (5,5, 5, 4);
+-- INSERT INTO USER_ORDER (id, order_id, user_id, quantity) VALUES (1,1, 1, 2);
+INSERT INTO USER_ORDER (order_id, user_id, quantity) VALUES (1, 1, 2);
+INSERT INTO USER_ORDER ( order_id, user_id, quantity) VALUES (2, 2, 5);
+INSERT INTO USER_ORDER ( order_id, user_id, quantity) VALUES (3, 3, 1);
+INSERT INTO USER_ORDER ( order_id, user_id, quantity) VALUES (4, 4, 3);
+INSERT INTO USER_ORDER ( order_id, user_id, quantity) VALUES (5, 5, 4);
+

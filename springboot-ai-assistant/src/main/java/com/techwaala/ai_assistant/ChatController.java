@@ -2,7 +2,7 @@ package com.techwaala.ai_assistant;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,19 +16,19 @@ public class ChatController {
 
     private OrderManagementAIAssistant omAiAssistantConfiguration;
 
-    private static String PROMPT_STRING = "Create an order with quantity 20 for user id Jenny, and\n" +
-            "randomly generate a positive whole number for the order ID";
+    private final OrderChatAssistant orderChatAssistant;
 
-    public ChatController(OrderManagementAIAssistant omAiAssistant){
-        this.omAiAssistantConfiguration = omAiAssistant;
+    private final OrderManagementAIAssistant orderManagementAIAssistant;
+
+    public ChatController(OrderChatAssistant orderChatAssistant, OrderManagementAIAssistant orderManagementAIAssistant) {
+        this.orderChatAssistant = orderChatAssistant;
+        this.orderManagementAIAssistant = orderManagementAIAssistant;
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> chat() {
-        ChatResponse response = this.omAiAssistantConfiguration
-                .callChatClient(Set.of("createOrderFn"), PROMPT_STRING);
-        String resultContent = response.getResult().getOutput().getText();
-        log.info("The response from the LLM service: {}", resultContent);
-        return  ResponseEntity.ok().body(resultContent);
+    @PostMapping("/chat/{prompt}")
+    public String chat(@PathVariable("prompt") String promptString) {
+        ChatResponse response = this.orderManagementAIAssistant
+                .callChatClient(Set.of("createOrderFn"), promptString);
+        return response.getResult().getOutput().getText();
     }
 }

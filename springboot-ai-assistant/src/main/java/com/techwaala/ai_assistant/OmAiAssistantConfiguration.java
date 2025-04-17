@@ -14,11 +14,11 @@ import java.util.function.Function;
 public class OmAiAssistantConfiguration {
 
     @Bean
-    @Description("Create an order. The Order ID is identified with orderID. "
+    @Description("Create an order. The Order Id is identified with orderId. "
                + "The order quantity is identified by orderQuantity."
-               + "The user is identified by userID. "
+               + "The user is identified by userId. "
                + "The order quantity should be a positive whole number."
-               + "If any of the parameters like user id and the order quantity is missing"
+               + "If any of the parameters like userId and the order quantity is missing"
                + "then ask the user to provide the missing information.")
     public Function<CreateOrderRequest, Long> createOrderFn(OrderManagementService orderManagementService) {
         return createOrderRequest -> orderManagementService.createOrder(createOrderRequest.userOrder());
