@@ -1,2 +1,2 @@
 _______________________________________________________________________________
-This empty demo multimodule project 
+This Java and SpringBoot Multimodule project 
