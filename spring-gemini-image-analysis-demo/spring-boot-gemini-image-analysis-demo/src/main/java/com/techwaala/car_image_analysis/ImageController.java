@@ -37,8 +37,8 @@ public class ImageController {
     })
     @PostMapping(value="/carCounts", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> carCounts(
-            @Parameter(description = "File to be uploaded", required = true) @RequestParam("file") MultipartFile file) {
-        String colors = "Red";
+            @Parameter(description = "File to be uploaded", required = true)
+            @RequestParam("file") MultipartFile file, @RequestParam("colors") String colors) {
         try (InputStream inputStream = file.getInputStream()) {
             var carCount = carCountService.countCar(inputStream, file.getContentType(), colors);
             return ResponseEntity.ok(carCount);
