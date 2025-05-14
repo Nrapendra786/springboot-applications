@@ -17,10 +17,10 @@ sleep 20
   -s lastName=Doe
 
 #Set user1 password
-/opt/keycloak/bin/kcadm.sh set-password -r ApplicationRealm --username user1 --new-password 123456
+/opt/keycloak/bin/kcadm.sh set-password -r ApplicationRealm --username test --new-password test
 
 #Create Client
-/opt/keycloak/bin/kcadm.sh create clients -r ApplicationRealm -s clientId=my-client -s bearerOnly="false" -s "redirectUris=[\"http://localhost:8080/*\"]" -s enabled=true -s directAccessGrantsEnabled=true -s clientAuthenticatorType=client-secret -s secret=mysecret
+/opt/keycloak/bin/kcadm.sh create clients -r ApplicationRealm -s clientId=my-client -s bearerOnly="false" -s "redirectUris=[\"http://localhost:8081/*\"]" -s enabled=true -s directAccessGrantsEnabled=true -s clientAuthenticatorType=client-secret -s secret=mysecret
 
 #Create Role customer-manager
 /opt/keycloak/bin/kcadm.sh create roles -r ApplicationRealm -s name=admin
