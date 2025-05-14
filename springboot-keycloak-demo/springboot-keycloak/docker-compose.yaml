@@ -1,0 +1,286 @@
+networks:
+  spring-boot-network:
+    driver: bridge
+services:
+  auth:
+     image: quay.io/keycloak/keycloak:latest
+     ports:
+      - "8080:8080"
+     environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+     volumes:
+      - ./create-user.sh:/opt/keycloak/bin/create-user.sh
+      - ./init.sh:/opt/keycloak/init.sh
+     entrypoint: ["/bin/bash", "/opt/keycloak/init.sh"]
+     networks:
+      - spring-boot-network
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+#networks:
+#  spring-boot-network:
+#    driver: bridge
+#
+#services:
+#  keycloak:
+#    extra_hosts:
+#      - "localhost:host-gateway"
+#    image: quay.io/keycloak/keycloak:26.0.1
+#    container_name: stepup-keycloak
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./keycloak/:/opt/keycloak/data/import/
+#      - ./create-user.sh:/opt/keycloak/create-user.sh
+#    environment:
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#      KC_HOSTNAME: localhost
+#      KC_HOSTNAME_STRICT: true
+#  #  entrypoint: [ "/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
+#  #  entrypoint: [ "/bin/bash", "-c", "/opt/keycloak/bin/kc.sh start-dev & sleep 20 && /opt/keycloak/bin/kcadm.sh config credentials --server http://localhost:8080 --realm master --user admin --password admin && /opt/keycloak/bin/kcadm.sh create users -r food-ordering-realm -s username=ajay -s enabled=true -s emailVerified=true && /opt/keycloak/bin/kcadm.sh set-password -r food-ordering-realm --username ajay --new-password ajay && wait" ]
+#    networks:
+#      - spring-boot-network
+#    entrypoint: >
+#      bash -c "/opt/keycloak/bin/kc.sh start-dev --import-realm &
+#               sleep 30 &&
+#               bash /opt/keycloak/create-user.sh &&
+#               wait"
+#    healthcheck:
+#      test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+#      interval: 10s
+#      timeout: 10s
+#      retries: 20
+#  backend:
+#    depends_on:
+#      keycloak:
+#        condition: service_healthy
+#    extra_hosts:
+#      - "localhost:host-gateway"
+#    #    environment:
+#    #      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUER_URI=http://keycloak:8080/realms/food-ordering-realm
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    container_name: stepup-backend
+#    ports:
+#      - "8081:8081"
+#    networks:
+#      - spring-boot-network
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#networks:
+#  spring-boot-network:
+#    driver: bridge
+#services:
+#  keycloak:
+#    image: quay.io/keycloak/keycloak:21.0
+#    container_name: stepup-keycloak
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - spring-boot-network
+#    volumes:
+#      - ./keycloak:/opt/keycloak/data/import/
+#    environment:
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#      KC_HOSTNAME: localhost
+#      KC_HOSTNAME_STRICT: true
+#    entrypoint: [ "/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+#      interval: 10s
+#      timeout: 10s
+#      retries: 20
+#  backend:
+#    depends_on:
+#       keycloak:
+#          condition: service_healthy
+#    build:
+#       context: .
+#       dockerfile: Dockerfile
+#    container_name: stepup-backend
+#    ports:
+#      - "8081:8080"
+#    networks:
+#      - spring-boot-network
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#services:
+#  keycloak:
+#    image: quay.io/keycloak/keycloak:latest
+#    environment:
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#      KC_HOSTNAME: localhost
+#      KC_HOSTNAME_STRICT: true
+#    ports:
+#      - "8080:8080"
+#    entrypoint: [ "/opt/keycloak/bin/kc.sh", "start-dev" ]
+#    restart: unless-stopped
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#    volumes:
+#      - ./realm-demo.json:/opt/keycloak/data/import/realm-demo.json
+#      - keycloak_data:/opt/keycloak/data
+#    healthcheck: , "--import-realm"
+#      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 10
+#  post-start:
+#    image: curlimages/curl:latest
+#    depends_on:
+#      keycloak:
+#        condition: service_healthy
+#    volumes:
+#      - ./post-keycloak.sh:/post-keycloak.sh
+#    entrypoint: [ "sh", "/post-keycloak.sh" ]
+#    networks:
+#      - spring-boot-network
+
+
+
+
+#networks:
+#  spring-boot-network:
+#    driver: bridge
+#services:
+#  keycloak:
+#    image: quay.io/keycloak/keycloak:latest
+#    environment:
+#      KEYCLOAK_ADMIN: admin
+#      KEYCLOAK_ADMIN_PASSWORD: admin
+#      KC_HOSTNAME: localhost
+#    ports:
+#      - "8080:8080"
+#    entrypoint: [ "/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
+#    volumes:
+#      - ./realm-demo.json:/opt/keycloak/data/import/realm-demo.json
+#    restart: unless-stopped
+#    networks:
+#      - spring-boot-network
+
+
+
