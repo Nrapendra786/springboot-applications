@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 
 @RestController
-public class FoodOrderingController {
+public class DemoController {
 
     @GetMapping("/")
     public HashMap<String,String> index() {
